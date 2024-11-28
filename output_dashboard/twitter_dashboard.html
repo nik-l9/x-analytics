@@ -58,6 +58,22 @@
             opacity: 0.9;
         }
 
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: var(--secondary);
+        }
+
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -113,14 +129,14 @@
         }
 
         .link {
-            color: var(--primary);
+            color: #00008B;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .link:hover {
-            color: var(--secondary);
+            color: #0000CD;
         }
 
         footer {
@@ -155,32 +171,51 @@
 <body>
     <div class="container">
         <header>
-            <h1>Twitter Analytics Dashboard</h1>
-            <p class="subtitle">Insights and Performance Metrics</p>
-        </header>
+    <h1>Twitter Analytics Dashboard</h1>
+    <p class="subtitle">Insights and Performance Metrics <a href="twitter_analytics_report.html" target="_blank" class="link">View Detailed Report</a></p>
+</header>
 
-        <section class="summary">
-            <h2>Summary</h2>
-            <p>Explore the detailed profiling report and analytics insights for your Twitter account.</p>
-            <p>For a comprehensive analysis, view the <a href="twitter_analytics_report.html" target="_blank" class="link">detailed summary and profiling report</a>.</p>
-        </section>
 
-        <div class="dashboard-grid">
+        <div class="button-container">
+            <button class="button" onclick="toggleCharts('7days')">Last 7 Days</button>
+            <button class="button" onclick="toggleCharts('30days')">Last 30 Days</button>
+        </div>
+
+        <div class="dashboard-grid" id="7days-charts">
             <div class="chart-container">
                 <h2>Impressions, Likes, and New Followers</h2>
-                <iframe src="interactive_time_series.html" onload="this.style.height=this.contentWindow.document.body.scrollHeight+'px';"></iframe>
+                <iframe src="interactive_time_series_last_7_days.html"></iframe>
             </div>
             <div class="chart-container">
                 <h2>Engagement Rate Over Time</h2>
-                <iframe src="engagement_rate_time_series.html" onload="this.style.height=this.contentWindow.document.body.scrollHeight+'px';"></iframe>
+                <iframe src="engagement_rate_time_series_last_7_days.html"></iframe>
             </div>
             <div class="chart-container full-width">
                 <h2>Engagement Metrics by Date</h2>
-                <iframe src="engagement_metrics_by_date.html" height="600px" onload="this.style.height=this.contentWindow.document.body.scrollHeight+'px';"></iframe>
+                <iframe src="engagement_metrics_by_date_last_7_days.html" height="600px"></iframe>
             </div>
             <div class="chart-container full-width">
                 <h2>Video vs Media Views</h2>
-                <iframe src="video_media_views_comparison.html" height="900px" onload="this.style.height=this.contentWindow.document.body.scrollHeight+'px';"></iframe>
+                <iframe src="video_media_views_comparison_last_7_days.html" height="900px"></iframe>
+            </div>
+        </div>
+
+        <div class="dashboard-grid" id="30days-charts" style="display: none;">
+            <div class="chart-container">
+                <h2>Impressions, Likes, and New Followers</h2>
+                <iframe src="interactive_time_series_last_30_days.html"></iframe>
+            </div>
+            <div class="chart-container">
+                <h2>Engagement Rate Over Time</h2>
+                <iframe src="engagement_rate_time_series_last_30_days.html"></iframe>
+            </div>
+            <div class="chart-container full-width">
+                <h2>Engagement Metrics by Date</h2>
+                <iframe src="engagement_metrics_by_date_last_30_days.html" height="600px"></iframe>
+            </div>
+            <div class="chart-container full-width">
+                <h2>Video vs Media Views</h2>
+                <iframe src="video_media_views_comparison_last_30_days.html" height="900px"></iframe>
             </div>
         </div>
 
@@ -188,5 +223,12 @@
             <p>&copy; 2024 Built with ❤️ by Nikhil. All Rights Reserved.</p>
         </footer>
     </div>
+
+    <script>
+        function toggleCharts(timeRange) {
+            document.getElementById('7days-charts').style.display = timeRange === '7days' ? 'block' : 'none';
+            document.getElementById('30days-charts').style.display = timeRange === '30days' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
