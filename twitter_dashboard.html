@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Analytics Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        .chart {
+            width: 100%;
+            margin-top: 30px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .chart img {
+            width: 48%;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .chart iframe {
+            width: 48%;
+            height: 500px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Analytics Dashboard</h1>
+
+        <h2>Summary</h2>
+        <p>Explore the summary statistics and profiling report <a href="twitter_analytics_report.html" target="_blank">here</a>.</p>
+
+        <h2>Interactive Visualizations</h2>
+        <div class="chart-container">
+            <div class="chart">
+                <h3>Impressions and Likes Over Time</h3>
+                <iframe src="interactive_time_series.html" frameborder="0"></iframe>
+            </div>
+            <div class="chart">
+                <h3>Engagement Rate Over Time</h3>
+                <iframe src="engagement_rate_time_series.html" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <h2>Engagement Breakdown</h2>
+        <div class="chart">
+            <h3>Engagement Breakdown (Likes, Replies, Reposts, etc.)</h3>
+            <iframe src="engagement_pie_chart.html" frameborder="0"></iframe>
+        </div>
+
+        <h2>Video Views vs Media Views</h2>
+        <div class="chart">
+            <h3>Video vs Media Views Comparison</h3>
+            <iframe src="video_media_views_comparison.html" frameborder="0"></iframe>
+        </div>
+    </div>
+</body>
+</html>
